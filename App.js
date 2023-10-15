@@ -1,20 +1,19 @@
 import React from 'react';
+import { StyleSheet, StatusBar, SafeAreaView } from 'react-native';
+// import CurrentWeather from './src/CurrentWeather';
+import UpcomingWeather from './src/UpcomingWeather';
 
-import { Text, View, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
-
-export default function App() {
+const App = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <View>
-                <Text>Open up App.js to start working on your app!</Text>
-            </View>
+            {/* <CurrentWeather /> */}
+            <UpcomingWeather />
         </SafeAreaView>
     );
-}
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: StatusBar.currentHeight
-    }
+    container: { flex: 1, marginTop: StatusBar.currentHeight }
 });
+
+export default App;
