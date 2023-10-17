@@ -7,8 +7,10 @@ import {
     SafeAreaView
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import moment from 'moment';
 
-const City = () => {
+const City = ({ weatherData }) => {
+    const { name, country, population, sunrise, sunset } = weatherData;
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground
@@ -16,23 +18,27 @@ const City = () => {
                 source={require('../../assets/upcoming-background.jpg')}
             >
                 <View style={styles.cityContainer}>
-                    <Text style={[styles.state, styles.cityText]}>
-                        Uttar Pradesh
+                    <Text style={[styles.state, styles.cityText]}>{name}</Text>
+                    <Text style={[styles.country, styles.cityText]}>
+                        {country}
                     </Text>
-                    <Text style={[styles.country, styles.cityText]}>India</Text>
                 </View>
                 <View style={styles.populationWrapper}>
                     <Feather name="user" size={50} />
-                    <Text style={styles.populationCount}>180000</Text>
+                    <Text style={styles.populationCount}>{population}</Text>
                 </View>
                 <View style={styles.sunWrapper}>
                     <View style={styles.sun}>
                         <Feather name="sunrise" color="white" size={25} />
-                        <Text style={styles.sunText}>10:46:58 am</Text>
+                        <Text style={styles.sunText}>
+                            {moment(sunrise).format('h:mm:ss a')}
+                        </Text>
                     </View>
                     <View style={styles.sun}>
                         <Feather name="sunset" color="white" size={25} />
-                        <Text style={styles.sunText}>17:46:58 pm</Text>
+                        <Text style={styles.sunText}>
+                            {moment(sunset).format('h:mm:ss a')}
+                        </Text>
                     </View>
                 </View>
             </ImageBackground>
